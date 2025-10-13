@@ -4,6 +4,8 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
+
 
 // Load environment variables
 dotenv.config();
@@ -25,6 +27,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", authRoutes);
+app.use("/api/orders", orderRoutes);
 
 // Read port number from .env or default to 5000
 const PORT = process.env.PORT || 5000;
