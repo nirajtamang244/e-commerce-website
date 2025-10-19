@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CartPage() {
   const { cart, removeFromCart, updateQty, clearCart } = useContext(CartContext);
 
   const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
 
+  const navigate = useNavigate();
+  
   if (cart.length === 0) {
     return (
       <div className="container mt-5 text-center">
@@ -52,7 +55,7 @@ function CartPage() {
       <button className="btn btn-secondary mt-3 me-2" onClick={clearCart}>
         Clear Cart
       </button>
-      <button className="btn btn-success mt-3">Proceed to Checkout</button>
+      <button className="btn btn-success mt-3" onClick={() => navigate("/checkout")}>Proceed to Checkout</button>
     </div>
   );
 }
