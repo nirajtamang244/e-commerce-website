@@ -31,8 +31,8 @@ const handleImageUpload = (e) => {
     const fetchData = async () => {
       try {
         const [productRes, orderRes] = await Promise.all([
-          axios.get("http://localhost:5050/api/products"),
-          axios.get("http://localhost:5050/api/orders", {
+          axios.get("https://e-commerce-website-backend-wy5z.onrender.com/api/products"),
+          axios.get("https://e-commerce-website-backend-wy5z.onrender.com/api/orders", {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -61,7 +61,7 @@ const handleImageUpload = (e) => {
     };
 
     try {
-      const res = await axios.post("http://localhost:5050/api/products", newProduct);
+      const res = await axios.post("https://e-commerce-website-backend-wy5z.onrender.com/api/products", newProduct);
       setProducts([...products, res.data]);
       e.target.reset();
       alert("✅ Product added successfully!");
@@ -157,7 +157,7 @@ const handleImageUpload = (e) => {
                     className="btn btn-danger btn-sm"
                     onClick={async () => {
                       try {
-                        await axios.delete(`http://localhost:5050/api/products/${p._id}`);
+                        await axios.delete(`https://e-commerce-website-backend-wy5z.onrender.com/api/products/${p._id}`);
                         setProducts(products.filter((x) => x._id !== p._id));
                         alert("🗑️ Product deleted!");
                       } catch (err) {
