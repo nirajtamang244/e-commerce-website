@@ -7,7 +7,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5050/api/products")
+      .get("https://e-commerce-website-backend-wy5z.onrender.com/api/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error fetching products:", err));
   }, []);

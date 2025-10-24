@@ -8,7 +8,7 @@ function OrderConfirmationPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5050/api/orders/${id}`, {
+      .get(`https://e-commerce-website-backend-wy5z.onrender.com/api/orders/${id}`, {
         headers: {
           Authorization: `Bearer fake_user_token_for_now`,
         },

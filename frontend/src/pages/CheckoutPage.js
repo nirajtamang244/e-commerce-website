@@ -45,7 +45,7 @@ function CheckoutPage() {
 
       // Send order to backend (you can replace token with real user later)
       const res = await axios.post(
-        "http://localhost:5050/api/orders",
+        "https://e-commerce-website-backend-wy5z.onrender.com/api/orders",
         orderData,
         {
           headers: {
