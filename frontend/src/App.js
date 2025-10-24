@@ -4,6 +4,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import CartPage from "./pages/CartPage";
 import { Link } from "react-router-dom";
 import CheckoutPage from "./pages/CheckoutPage";
+import AdminDashboard from "./pages/AdminDashboard";
 
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
         <Link to="/" className="text-white text-decoration-none">
         <h2>E-Commerce Site</h2>
         </Link>
-        <Link to="/cart" className="btn btn-outline-light"> Cart </Link>
+        <Link to="/cart" className="btn btn-outline-light"> 🛒 Cart </Link>
+        <Link to="/admin" className="btn btn-outline-warning">⚙️ Admin </Link>
         </div>
         </header>
 
@@ -25,6 +27,7 @@ function App() {
             <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>
       </div>
