@@ -13,28 +13,70 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="container mt-4">
-      <h2>Our Products</h2>
-      <div className="row">
-        {products.map((p) => (
-          <div key={p._id} className="col-md-4 mb-3">
-            <Link to={`/product/${p._id}`} className="text-decoration-none text-dark">
-            <div className="card h-100">
-              <img
-                src={p.image}
-                className="card-img-top"
-                alt={p.name}
-                style={{ height: "200px", objectFit: "cover" }}
-              />
-              <div className="card-body">
-                <h5 className="card-title">{p.name}</h5>
-                <p>${p.price.toFixed(2)}</p>
-              </div>
-            </div>
-            </Link>
+    <div className="mt-3">
+      {/* ===== HERO ===== */}
+      **<section className="hero">
+        <div
+          className="hero-card"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1600&auto=format&fit=crop')"
+          }}
+        >
+          <div className="hero-inner">
+            <h1 className="hero-title">Summer Arrival of Outfit</h1>
+            <p className="hero-sub">Discover quality fashion that reflects your style and makes everyday enjoyable.</p>
+            <button className="hero-cta">Explore Product →</button>
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
+
+      {/* ===== MINI PROMOS (2) ===== */}
+      <section className="promos">
+        <div className="promo">
+          <div>
+            <div className="promo-title">Where dreams meet couture</div>
+            <button className="promo-btn">Shop Now</button>
+          </div>
+          <img src="https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=600&auto=format&fit=crop" alt="" width="120" style={{borderRadius:12}} />
+        </div>
+        <div className="promo">
+          <div>
+            <div className="promo-title">Enchanting styles for every women</div>
+            <button className="promo-btn">Shop Now</button>
+          </div>
+          <img src="https://images.unsplash.com/photo-1549478570-18e4e90d03f3?q=80&w=600&auto=format&fit=crop" alt="" width="120" style={{borderRadius:12}} />
+        </div>
+      </section>
+
+      {/* ===== CATEGORIES STRIP ===== */}
+      <section className="section">
+        <h3>Browse by categories</h3>
+        <div className="categories">
+          <div className="cat"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=400&auto=format&fit=crop" alt="shoes" /><span className="badge">SHOES</span></div>
+          <div className="cat"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=400&auto=format&fit=crop" alt="brush" /><span className="badge">BRUSH</span></div>
+          <div className="cat"><img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=400&auto=format&fit=crop" alt="bag" /><span className="badge">BAG</span></div>
+          <div className="cat"><img src="https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=400&auto=format&fit=crop" alt="tshirt" /><span className="badge">T-SHIRT</span></div>
+        </div>
+      </section>**
+
+      {/* ===== PRODUCTS ===== */}
+      <section className="section">
+        <h3>Popular products</h3>
+        <div className="grid">
+          {products.map((p) => (
+            <div key={p._id} className="card">
+              <Link to={`/product/${p._id}`} className="text-decoration-none text-dark">
+                <img src={p.image} alt={p.name} />
+                <div className="card-body">
+                  <div className="card-title">{p.name}</div>
+                  <div className="card-price">${p.price.toFixed(2)}</div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

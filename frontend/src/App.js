@@ -19,62 +19,46 @@ function App() {
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem("user");
-    setShowLogout(true); 
+    setShowLogout(true);
     setTimeout(() => setShowLogout(false), 2000);
   };
 
   return (
     <Router>
       <div>
-        <header className="bg-dark text-white py-3">
-          <div className="container d-flex justify-content-between align-items-center">
-            <Link to="/" className="text-white text-decoration-none">
-              <h2>E-Commerce Site</h2>
+        <header className="site-header">
+          <nav className="navbar">
+            <Link to="/" className="brand">
+              <span className="brand-logo">PF</span>
+              <span className="brand-name">PaFan</span>
             </Link>
 
-            <div>
-              {/* If logged in */}
+            <form className="search" onSubmit={(e)=>e.preventDefault()}>
+              <input placeholder="Search products…" />
+              <button type="submit">Search</button>
+            </form>
+
+            <div className="actions">
               {user ? (
                 <>
-                  <span className="me-3">Hello, {user.name}</span>
-                  <button
-                    className="btn btn-outline-light me-2"
-                    onClick={handleLogout}
-                  >
-                    Logout
-                  </button>
+                  <span className="btn">Hello, {user.name}</span>
+                  <button className="btn btn-outline" onClick={handleLogout}>Logout</button>
                 </>
               ) : (
                 <>
-                  <button
-                    className="btn btn-outline-light me-2"
-                    onClick={() => setShowLogin(true)}
-                  >
-                    Login
-                  </button>
-                  <button
-                    className="btn btn-outline-light me-2"
-                    onClick={() => setShowSignup(true)}
-                  >
-                    Signup{" "}
-                  </button>
+                  <button className="btn btn-outline" onClick={() => setShowLogin(true)}>Login</button>
+                  <button className="btn btn-outline" onClick={() => setShowSignup(true)}>Sign Up</button>
                 </>
               )}
-
-              <Link to="/cart" className="btn btn-outline-light me-2">
-                {" "}
-                🛒 Cart{" "}
-              </Link>
+              <Link to="/cart" className="cart">🛒 Cart</Link>
               {user?.isAdmin && (
-                <Link to="/admin" className="btn btn-outline-warning">
-                  ⚙️ Admin{" "}
-                </Link>
+                <Link to="/admin" className="btn btn-outline">⚙️ Admin</Link>
               )}
             </div>
-          </div>
+          </nav>
         </header>
 
-        <main>
+        <main style={{maxWidth: "1200px", margin: "0 auto", padding: "0 20px"}}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/product/:id" element={<ProductDetailPage />} />
