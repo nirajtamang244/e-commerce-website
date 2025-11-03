@@ -9,9 +9,21 @@ export function UserProvider({ children }) {
   });
 
   useEffect(() => {
-    if (user) localStorage.setItem("user", JSON.stringify(user));
-    else localStorage.removeItem("user");
+    // Keep user data in localStorage in sync at all times
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
+    }
   }, [user]);
+
+  // Optional: auto-refresh from localStorage if a reload happens
+  useEffect(() => {
+    const saved = localStorage.getItem("user");
+    if (saved && !user) {
+      setUser(JSON.parse(saved));
+    }
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

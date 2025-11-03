@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { UserContext } from "../context/UserContext";
 
 function AdminDashboard() {
+  const { user } = useContext(UserContext);
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState("");
@@ -21,12 +23,20 @@ const handleImageUpload = (e) => {
     reader.readAsDataURL(file);
   }
 };
-
-
+  
+if (!user?.isAdmin) {
+    return (
+      <div className="container mt-5 text-center">
+        <h3>Access Denied</h3>
+        <p>You must be an admin to view this page.</p>
+      </div>
+    );
+  }
 
   useEffect(() => {
     // Replace this token with your real admin token from Postman
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MDgwN2MyYTVkYThhZWI0NTBiMTUxMCIsImlhdCI6MTc2MjEzNTU4NywiZXhwIjoxNzYyNzQwMzg3fQ.MUMySctJ8iOJCbuIHRy8p2SqkayM1S4TYzT3P-bT8vY";
+    if (!user?.token) return;
+    
     const fetchData = async () => {
       try {
         const [productRes, orderRes] = await Promise.all([
