@@ -26,8 +26,7 @@ const handleImageUpload = (e) => {
 
   useEffect(() => {
     // Replace this token with your real admin token from Postman
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTkyZTQwMTcyNTRmZWM5OTNhMDMwNSIsImlhdCI6MTc2MTA2MDA5MSwiZXhwIjoxNzYxNjY0ODkxfQ.uwalbiLtWvsZYvryPABKcnG62RprrS2aAokXGn3LQPc";
-
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MDgwN2MyYTVkYThhZWI0NTBiMTUxMCIsImlhdCI6MTc2MjEzNTU4NywiZXhwIjoxNzYyNzQwMzg3fQ.MUMySctJ8iOJCbuIHRy8p2SqkayM1S4TYzT3P-bT8vY";
     const fetchData = async () => {
       try {
         const [productRes, orderRes] = await Promise.all([
